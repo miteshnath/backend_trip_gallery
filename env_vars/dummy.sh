@@ -1,0 +1,10 @@
+export PG_USER=XXXX
+export PG_PW=XXXX
+export PG_DB=XXXX
+export PG_HOST=XXXX
+export PG_PORT=XXXX
+
+export S3_BUCKET=XXXXXXXX
+export ACCESS_KEY=XXXX
+export SECRET_KEY=XXXX
+export FLASK_KEY=XXXX

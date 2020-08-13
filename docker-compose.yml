@@ -1,0 +1,35 @@
+version: '3.6'
+
+services:
+  api:
+    build: .
+    depends_on:
+      - db
+    environment:
+      PG_USER: mitesh
+      PG_PW: abc123
+      PG_DB: users_db
+      PG_PORT: 5432
+      SQLALCHEMY_DATABASE_URI: postgresql+psycopg2://mitesh:abc123@db/users_db
+    networks:
+      - default
+    ports:
+      - 5000:5000
+    volumes:
+      - ./app:/usr/src/app
+      - ./migrations:/usr/src/migrations
+    restart: always
+
+  db:
+    environment:
+      POSTGRES_USER: mitesh
+      POSTGRES_PASSWORD: abc123
+      POSTGRES_DB: users_db
+    image: postgres:latest
+    networks:
+      - default
+    ports:
+      - 5432:5432
+    restart: always
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
